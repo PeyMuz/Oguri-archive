@@ -11,13 +11,13 @@ function navbar() {
             <a className="nav-link" href="#">Home</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Game</a>
-          </li>
-          <li className="nav-item">
             <a className="nav-link" href="#">Facts</a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">Career</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">Game</a>
           </li>
         </ul>
       </div>
