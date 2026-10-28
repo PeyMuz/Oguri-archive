@@ -1,23 +1,25 @@
+import { Link } from 'react-router-dom';
+
 function navbar() {
   return (
     <nav className="navbar navbar-expand nav">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           Oguri Archive
-        </a>
+        </Link>
 
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#">Home</a>
+            <Link className="nav-link" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Facts</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Career</a>
+            <Link className="nav-link" to="/facts">Facts</Link>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">Game</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">Career</a>
           </li>
         </ul>
       </div>

@@ -9,6 +9,10 @@ import Fact8 from '../assets/fact8.png';
 import Fact9 from '../assets/fact9.png';
 import Fact10 from '../assets/fact10.png';
 
+//------------------------
+
+import blush from '../assets/oguriblush.gif';
+
 
 const factsData = [
    { img: Fact1, 
@@ -43,11 +47,11 @@ const factsData = [
     title: "She Doesn't Easily Give Up" 
     ,text: "One of Oguri Cap's defining qualities is her determination. Even when she faces stronger opponents or difficult races, she keeps pushing forward instead of letting pressure define her."},
     
-    { img: Fact9, 
+    { img: Fact10, 
     title: "She and Special Week hosted a cooking show" 
     ,text: "In Umayuru Episode 22, Oguri Cap and Special Week host a cooking program with Matikanetannhauser, making carrot hamburger steak."},
 
-    { img: Fact10, 
+    { img: Fact9, 
     title: "THE Final Race Became Legendary" 
     ,text: "The real Oguri Cap won the 1990 Arima Kinen, his final race before retirement. His emotional comeback victory became one of the most memorable moments in Japanese horse-racing history and helped cement his legendary status."}  
     
@@ -62,12 +66,29 @@ const factsData = [
 
 function Facts(){
     return(
- <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap" />
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>
+    <>
+    <div className='title-fact'>
+      <h1>FACTS ABOUT OGURI CAP</h1>
+      <img src = {blush}/>
+    </div>
+   <section className='facts'>
+    <div className='container'>
+      <div className="row">
+        {factsData.map((fact,index) =>(
+          <div className="col-md-4 mb-4" key={index}>
+            <div className="card">
+               <img className="card-img-top" src={fact.img} alt={`Fact ${index + 1}`} />
+               <div className="card-body">
+                 <p className='card-text'>{fact.text}</p>
+               </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+   </section>
+   </>
     );
 }
 
