@@ -54,40 +54,46 @@ const factsData = [
     { img: Fact9, 
     title: "THE Final Race Became Legendary" 
     ,text: "The real Oguri Cap won the 1990 Arima Kinen, his final race before retirement. His emotional comeback victory became one of the most memorable moments in Japanese horse-racing history and helped cement his legendary status."}  
-    
-
-
-
-
-
-
 
 ]; 
+
+// Hinati sa sections ayon sa Figma
+const sections =[
+  { heading: 'FACTS 01-03', items: factsData.slice(0, 3), start: 1},
+  { heading: 'FACTS 04-06', items: factsData.slice(3, 6), start: 4},
+  { heading: 'FACTS 07-09', items: factsData.slice(6, 9), start: 9},
+];
+
+const lastFact = factsData[9];
 
 function Facts(){
     return(
     <>
     <div className='title-fact'>
       <h1>FACTS ABOUT OGURI CAP</h1>
-      <img src = {blush}/>
-    </div>
-   <section className='facts'>
-    <div className='container'>
-      <div className="row">
-        {factsData.map((fact,index) =>(
-          <div className="col-md-4 mb-4" key={index}>
-            <div className="card">
-               <img className="card-img-top" src={fact.img} alt={`Fact ${index + 1}`} />
-               <div className="card-body">
-                 <p className='card-text'>{fact.text}</p>
-               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <img src = {blush} alt="Oguri Blush"/>
     </div>
 
-   </section>
+    <div className="facts">
+      {sections.map((section, sIndex) => (
+        <sections key={section.heading} className={`facts-section ${sIndex % 2 === 1 ? 'facts-section-alt' : ''}`}>
+
+            <div className="container">
+               <h2 className='facts-heading'>{sections.heading}</h2>
+               <div className="facts-divider"></div>
+
+               <div className="row align-items-start">
+                {sections.items.map((fact, i) => (
+                  <div className="col-md-4 mb-4" key={fact.title}>
+                    
+                  </div>
+                ))}
+               </div>
+            </div>
+        </sections>
+      ))}
+    </div>
+    
    </>
     );
 }
