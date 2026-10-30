@@ -271,3 +271,163 @@
   border-radius: 20px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+/*For Facts*/
+/*---Facts Sections---*/
+.facts-section {
+  padding: 3rem 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.facts-section-alt {
+  background-color: #F5F7FB;
+}
+
+.facts-section .container {
+  max-width: 1100px;
+  padding-inline: 2rem;
+}
+
+.facts-heading {
+  color: var(--primary-color);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+}
+
+.facts-divider {
+  width: 50px;
+  height: 3px;
+  background-color: var(--gold);
+  margin: 0.5rem 0 2rem;
+}
+
+/*---Fact Cards---*/
+.fact-card {
+  position: relative;
+  padding: 1.2rem;
+  border: 1px solid #E8EBF2;
+  border-radius: 20px;
+  background-color: #F8FAFD;
+  box-shadow: 0 4px 12px rgba(16, 27, 53, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 28px rgba(16, 27, 53, 0.2);
+}
+
+.fact-number {
+  position: static;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gold);
+  color: var(--primary-color);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
+}
+
+.fact-img {
+  width: 100%;
+  aspect-ratio: 7 / 8;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.fact-img:hover {
+  transform: scale(1.03);
+}
+
+.fact-card .card-body {
+  padding: 0.8rem 0 0;
+}
+
+.fact-title {
+  color: var(--primary-color);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+.fact-text {
+  color: #5B6475;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/*---Fact 10 (pahalang)---*/
+.fact-card-wide {
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.fact-card-wide .fact-number {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+.fact-card-wide .fact-img {
+  width: 260px;
+  flex-shrink: 0;
+  margin-top: 0;
+  margin-left: 3.5rem;
+}
+
+.fact-card-wide .card-body {
+  padding: 0;
+}
+
+/*---Facts Title---*/
+.title-fact {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 1rem;
+}
+
+.title-fact h1 {
+  color: var(--gold);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-shadow: 2px 3px 4px rgba(16, 27, 53, 0.25);
+  margin: 0;
+}
+
+.title-fact img {
+  height: 75px;
+  width: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/*---Scroll Fade---*/
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-show {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -9,6 +9,8 @@ import Fact8 from '../assets/fact8.png';
 import Fact9 from '../assets/fact9.png';
 import Fact10 from '../assets/fact10.png';
 
+import { useState, useEffect, useRef } from 'react';
+
 //------------------------
 
 import blush from '../assets/oguriblush.gif';
@@ -57,45 +59,136 @@ const factsData = [
 
 ]; 
 
-// Hinati sa sections ayon sa Figma
-const sections =[
-  { heading: 'FACTS 01-03', items: factsData.slice(0, 3), start: 1},
-  { heading: 'FACTS 04-06', items: factsData.slice(3, 6), start: 4},
-  { heading: 'FACTS 07-09', items: factsData.slice(6, 9), start: 9},
+
+const sections = [
+  { heading: 'FACTS 01-03', items: factsData.slice(0, 3), start: 1 },
+  { heading: 'FACTS 04-06', items: factsData.slice(3, 6), start: 4 },
+  { heading: 'FACTS 07-09', items: factsData.slice(6, 9), start: 7 },
 ];
 
 const lastFact = factsData[9];
 
 function Facts(){
+     const [selectedImg, setSelectedImg] = useState(null);
+
+     //to escape the lightbox
+
+     useEffect(() => {
+      const handleKey = (e) => {
+        if (e.key === 'Escape') setSelectedImg(null);
+      };
+      window.addEventListener('keydown', handleKey);
+      return () => window.removeEventListener('keydown',handleKey);
+     }, []);
+
+     //for scroll fade
+      const pageRef = useRef(null);
+
+      useEffect(() => {
+        const items = pageRef.current.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-show');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+
+        items.forEach((item) => observer.observe(item));
+        return () => observer.disconnect();
+      })
+
     return(
     <>
     <div className='title-fact'>
       <h1>FACTS ABOUT OGURI CAP</h1>
-      <img src = {blush} alt="Oguri Blush"/>
+      <img src={blush} alt="Oguri Blush" />
     </div>
 
-    <div className="facts">
+    <div className="facts" ref={pageRef}>
+
+      {/*For Sections 01-09*/}
       {sections.map((section, sIndex) => (
-        <sections key={section.heading} className={`facts-section ${sIndex % 2 === 1 ? 'facts-section-alt' : ''}`}>
+        <section
+          key={section.heading}
+          className={`facts-section ${sIndex % 2 === 1 ? 'facts-section-alt' : ''}`}
+        >
+          <div className="container">
+            <h2 className='facts-heading reveal'>{section.heading}</h2>
+            <div className="facts-divider"></div>
 
-            <div className="container">
-               <h2 className='facts-heading'>{sections.heading}</h2>
-               <div className="facts-divider"></div>
-
-               <div className="row align-items-start">
-                {sections.items.map((fact, i) => (
-                  <div className="col-md-4 mb-4" key={fact.title}>
-                    
+            <div className="row align-items-start">
+              {section.items.map((fact, i) => (
+                <div className="col-md-4 mb-4 reveal"
+                    key={fact.title}
+                    style={{ transitionDelay: `${i * 0.15}s` }}>
+                  <div className="card fact-card">
+                    <span className="fact-number">
+                      {String(section.start + i).padStart(2, '0')}
+                    </span>
+                    <img
+                      className="fact-img"
+                      src={fact.img}
+                      alt={fact.title}
+                      onClick={() => setSelectedImg(fact.img)}
+                    />
+                    <div className="card-body">
+                      <h3 className='fact-title'>{fact.title}</h3>
+                      <p className='card-text fact-text'>{fact.text}</p>
+                    </div>
                   </div>
-                ))}
-               </div>
+                </div>
+              ))}
             </div>
-        </sections>
+          </div>
+        </section>
       ))}
+
+      {/*for Fact 10*/}
+      <section className='facts-section facts-section-alt'>
+        <div className="container">
+          <h2 className="facts-heading">Fact 10</h2>
+          <div className="facts-divider"></div>
+
+          <div className="card fact-card fact-card-wide reveal">
+            <span className='fact-number'>10</span>
+            <img
+              className='fact-img'
+              src={lastFact.img}
+              alt={lastFact.title}
+              onClick={() => setSelectedImg(lastFact.img)}
+            />
+            <div className="card-body">
+              <h3 className='fact-title'>{lastFact.title}</h3>
+              <p className='card-text fact-text'>{lastFact.text}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/*For lightbox*/}
+
+      {selectedImg && (
+        <div className="lightbox" onClick={() => setSelectedImg(null)}>
+          <img 
+           className='lightbox-img'
+           src={selectedImg}
+           alt="Full View"
+           onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
-    
-   </>
+    </>
     );
 }
+
+
+
 
 export default Facts;
