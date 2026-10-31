@@ -228,6 +228,6 @@ To test Tamamo quickly, temporarily set `TAMAMO_START_SCORE` to `20`.
 - Character, music, and sound effects: Cygames, Inc. (*Umamusume: Pretty Derby*)
 - Game concept: inspired by the Google Chrome Dinosaur Game
 - Design: made in Figma, then built in React
-- Built by **Kylle** as a fan project
+- Built by **Kylle Bantog** as a fan project
 
 All rights to the original works belong to their respective owners. If you are a rights holder and want something removed, please open an issue.
