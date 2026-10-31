@@ -590,3 +590,453 @@
   line-height: 1.6;
   margin-bottom: 0;
 }
+
+/*----For Game----*/
+
+/*---Game Font---*/
+@font-face {
+    font-family: Minecraft;
+    src: url(./assets/Minecraft.ttf);
+}
+
+/*---Game Title---*/
+.title-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.game-title {
+  color: var(--gold);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-shadow: 2px 3px 4px rgba(16, 27, 53, 0.25);
+  margin-bottom: 0.8rem;
+}
+
+.sub-title-game {
+  color: var(--primary-color);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.meta-desc-game {
+  color: #5B6475;
+  font-size: 0.7rem;
+  margin-bottom: 0;
+}
+
+/*---Game Container---*/
+.game-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.game-container{
+    width: 100%;
+    height: 450px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    background-image: url('./assets/morning.png');
+    background-size: contain;
+    animation: bg-move 30s linear infinite;
+}
+
+@keyframes bg-move {
+    0%{
+        background-position: 100%;
+    }
+    100%{
+        background-position: -50%;
+    }
+}
+
+.player {
+    width: 160px;
+    height: 86px;
+    position: absolute;
+    left: 20%;
+    bottom: 82px;
+    background-image: url('./assets/oguri_cap_running_transparent.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*---Game Obstacle---*/
+.obstacle{
+    width: 60px;
+    height: 100px;
+    position: absolute;
+    left: 80%;
+    animation: move 3.5s linear infinite;
+    bottom: 82px;
+    background-image: url('./assets/carrot.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.obstacle-xs { width: 30px; height: 70px; }
+.obstacle-s  { width: 60px; height: 80px; }
+.obstacle-m  { width: 90px; height: 90px; }
+.obstacle-l  { width: 120px; height: 120px; }
+
+.obstacle-twin{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 20px);
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/carrot.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.obstacle.obstacle-double .obstacle-twin{
+    display: block;
+}
+
+@keyframes move{
+    0%{
+        left: 100%;
+    }
+    100% {
+        left: -300px;
+    }
+}
+
+/*---Game Score---*/
+.score-card{
+    font-size: 50px;
+    margin: 20px;
+    font-family: Minecraft;
+    color: azure;
+    text-shadow: 2px 2px #000;
+}
+
+.score-card span{
+    margin-right: 20px;
+}
+
+.score-card .label{
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+/*---Game Audio Control---*/
+.audio-control{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background-color: rgba(0, 0, 0, 0.45);
+    border-radius: 999px;
+}
+
+.btn-mute{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: azure;
+    cursor: pointer;
+}
+
+.btn-mute svg{
+    width: 26px;
+    height: 26px;
+}
+
+.btn-mute .speaker{
+    fill: currentColor;
+}
+
+.btn-mute .wave,
+.btn-mute .x{
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.btn-mute .x{
+    display: none;
+}
+
+.btn-mute.is-low .wave-2{
+    display: none;
+}
+
+.btn-mute.is-muted .wave{
+    display: none;
+}
+
+.btn-mute.is-muted .x{
+    display: block;
+}
+
+.volume-slider{
+    --fill: 50%;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 110px;
+    height: 6px;
+    border-radius: 999px;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(to right, azure var(--fill), rgba(255, 255, 255, 0.3) var(--fill));
+}
+
+.volume-slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: azure;
+    border: none;
+}
+
+.volume-slider::-moz-range-thumb{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: azure;
+    border: none;
+}
+
+/*---Game Start / Restart---*/
+.start-game,
+.restart-game{
+    visibility: hidden;
+    font-family: Minecraft;
+    background-color: #ffffffb8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    z-index: 2;
+}
+
+.start-game.show,
+.restart-game.show{
+    visibility: visible;
+}
+
+.start-game .content,
+.restart-game .content{
+    display: flex;
+}
+
+.start-game .btn-start-game,
+.restart-game .btn-reset-game{
+    border: none;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    background-image: url('./assets/ogurirestart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.start-game .text,
+.restart-game .text{
+    align-self: end;
+}
+
+.stop.game-container, .stop .obstacle,
+.waiting.game-container, .waiting .obstacle{
+    animation-play-state: paused;
+}
+
+.stop .player,
+.waiting .player{
+    background-image: url('./assets/Ogurirun.png');
+}
+
+/*---How To Play---*/
+.how-to {
+  max-width: 900px;
+  margin: 1rem auto 4rem;
+  padding: 1.5rem 2rem;
+  border: 1px solid #E8EBF2;
+  border-radius: 20px;
+  background-color: #F8FAFD;
+  font-family: 'Inter', sans-serif;
+}
+
+.how-to-heading {
+  color: var(--primary-color);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.how-to-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.how-to-item:last-child {
+  margin-bottom: 0;
+}
+
+.how-to-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gold);
+  border-radius: 50%;
+}
+
+.how-to-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--primary-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.how-to-title {
+  color: var(--primary-color);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+
+.how-to-text {
+  color: #5B6475;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+
+/*---Game Sunset Background---*/
+.bg-sunset {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-image: url('./assets/sunset.png');
+  background-size: contain;
+  transition: opacity 3s ease;
+  animation: bg-move 30s linear infinite;
+}
+
+.bg-sunset.show {
+  opacity: 1;
+}
+
+.stop .bg-sunset,
+.waiting .bg-sunset {
+  animation-play-state: paused;
+}
+
+.score-card {
+  position: relative;
+  z-index: 1;
+}
+
+/*---Game Tamamo Cross---*/
+.tamamo {
+  display: none;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 100%;
+  bottom: 185px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/*---Game Score Blink---*/
+@keyframes score-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.1; }
+}
+
+.score-card.blink .high-score,
+.score-card.blink .score {
+  animation: score-blink 0.4s ease-in-out infinite;
+  color: var(--gold);
+}
+
+
+/*---Game Tamamo Warning---*/
+.tamamo-warn {
+  display: none;
+  position: absolute;
+  right: 20px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--gold);
+  color: var(--primary-color);
+  font-family: Minecraft;
+  font-size: 26px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+  animation: warn-pulse 0.3s ease-in-out infinite alternate;
+}
+
+.tamamo-warn.show {
+  display: flex;
+}
+
+@keyframes warn-pulse {
+  from { transform: scale(0.9); opacity: 0.7; }
+  to   { transform: scale(1.15); opacity: 1; }
+}
+
+/*---Game Over Message---*/
+.restart-game {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.over-msg {
+  font-family: Minecraft;
+  font-size: 30px;
+  color: var(--primary-color);
+  text-align: center;
+}

@@ -19,7 +19,7 @@ function navbar() {
             <a className="nav-link" href="/career">Career</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Game</a>
+            <a className="nav-link" href="/game">Game</a>
           </li>
         </ul>
       </div>
