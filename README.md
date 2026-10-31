@@ -1,4 +1,5 @@
 # Oguri Archive
+<img width="1159" height="670" alt="ogugu" src="https://github.com/user-attachments/assets/939c9238-95c9-41b0-bfaa-461977c565b4" />
 
 A fan-made website about **Oguri Cap** from *Umamusume: Pretty Derby*. It features her story, fun facts, racing career, and a playable browser game called **Oguri-Run**.
 
