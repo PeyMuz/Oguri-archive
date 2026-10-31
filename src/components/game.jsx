@@ -456,7 +456,8 @@ function Game() {
       tamamoWarning = true;
       tamamoWarnLeft = TAMAMO_WARN_SEC;
       tamamoX = container.clientWidth + 20;
-      tamamoBase = TAMAMO_HEIGHTS[Math.floor(Math.random() * TAMAMO_HEIGHTS.length)];
+      tamamoBase = TAMAMO_HEIGHTS[Math.floor(Math.random() * TAMAMO_HEIGHTS.length)]
+  * (container.clientHeight / 450);   // sumusunod sa taas ng game box
       warnElement.style.bottom = `${tamamoBase + 15}px`;
       warnElement.classList.add('show');
       playSfx(tamamoConfident, 1000, 1.6);   // 0-1 sec lang

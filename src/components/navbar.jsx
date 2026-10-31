@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Darkmode from './darkmode';
 
 function navbar() {
   return (
@@ -16,10 +17,13 @@ function navbar() {
             <Link className="nav-link" to="/facts">Facts</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/career">Career</a>
+            <Link className="nav-link" to="/career">Career</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/game">Game</a>
+            <Link className="nav-link" to="/game">Game</Link>
+          </li>
+          <li className='nav-item ms-3'>
+             <Darkmode />
           </li>
         </ul>
       </div>

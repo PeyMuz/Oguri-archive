@@ -1,0 +1,242 @@
+/* =========================================================
+   theme.css  -  import AFTER App.css so these overrides win
+   ========================================================= */
+
+:root {
+  --page-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+  --page-bg: #0b1220;
+  --dark-surface: #14203a;
+  --dark-surface-alt: #0f182b;
+  --dark-border: #243350;
+  --dark-heading: #f5f7fb;
+  --dark-text: #a8b4c8;
+}
+
+body {
+  background-color: var(--page-bg);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* =========================================================
+   DAY / NIGHT TOGGLE
+   ========================================================= */
+.theme-toggle {
+  position: relative;
+  width: 76px;
+  height: 38px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(90deg, #6aaaec 0%, #3e7ec7 100%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.5s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.theme-toggle.is-dark {
+  border-color: rgba(120, 150, 210, 0.35);
+}
+
+/* Night sky fades in over the day sky (gradients can't transition) */
+.tt-night {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #050a16 0%, #101c36 55%, #24365e 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.is-dark .tt-night {
+  opacity: 1;
+}
+
+/* ---- Sun / Moon ---- */
+.tt-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffb90a;
+  box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.55),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.1),
+    0 0 0 5px rgba(255, 255, 255, 0.18),
+    0 0 0 10px rgba(255, 255, 255, 0.1);
+  transition:
+    transform 0.6s cubic-bezier(0.68, -0.25, 0.27, 1.25),
+    background-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.is-dark .tt-knob {
+  transform: translateX(38px) rotate(-30deg);
+  background: #e3eaf3;
+  box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.12),
+    0 0 0 5px rgba(120, 150, 210, 0.16),
+    0 0 0 10px rgba(120, 150, 210, 0.09);
+}
+
+/* Moon craters */
+.crater {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(105, 122, 160, 0.55);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.is-dark .crater {
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+.crater.k1 { width: 9px; height: 9px; left: 4px;  top: 6px; }
+.crater.k2 { width: 5px; height: 5px; left: 17px; top: 4px; }
+.crater.k3 { width: 7px; height: 7px; left: 15px; top: 16px; }
+
+/* ---- Stars ---- */
+.tt-stars i {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--sz);
+  height: var(--sz);
+  background: #fff;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  opacity: 0;
+  transform: scale(0.3) rotate(-45deg);
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+.is-dark .tt-stars i {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+  transition-delay: var(--d);
+  animation: tt-twinkle 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--d) * 6);
+}
+
+@keyframes tt-twinkle {
+  50% { opacity: 0.45; }
+}
+
+/* ---- Clouds ---- */
+.tt-clouds {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+.is-dark .tt-clouds {
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+.cloud {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+}
+.cloud.back { background: rgba(255, 255, 255, 0.4); }
+.cloud.back.b1 { width: 22px; height: 22px; left: 26px; bottom: -8px; }
+.cloud.back.b2 { width: 26px; height: 26px; left: 38px; bottom: -10px; }
+.cloud.c1   { width: 16px; height: 16px; left: 30px; bottom: -3px; }
+.cloud.c2   { width: 20px; height: 20px; left: 40px; bottom: -5px; }
+.cloud.c3   { width: 28px; height: 28px; right: -3px; bottom: -9px; }
+.cloud.base {
+  left: 32px;
+  right: -4px;
+  height: 11px;
+  bottom: -2px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle *,
+  .theme-toggle {
+    transition-duration: 0.01s !important;
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   DARK THEME OVERRIDES
+   (game area is left alone so the morning/sunset art still looks right)
+   ========================================================= */
+
+/* Navbar */
+[data-theme="dark"] .nav {
+  background-color: #070d1a;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+/* Headings */
+[data-theme="dark"] .hero-title,
+[data-theme="dark"] .story-heading,
+[data-theme="dark"] .story-item-title,
+[data-theme="dark"] .facts-heading,
+[data-theme="dark"] .fact-title,
+[data-theme="dark"] .timeline-heading,
+[data-theme="dark"] .timeline-title,
+[data-theme="dark"] .sub-title-game,
+[data-theme="dark"] .how-to-heading,
+[data-theme="dark"] .how-to-title {
+  color: var(--dark-heading);
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Body text */
+[data-theme="dark"] .hero-desc,
+[data-theme="dark"] .story-text,
+[data-theme="dark"] .fact-text,
+[data-theme="dark"] .timeline-text,
+[data-theme="dark"] .meta-desc-game,
+[data-theme="dark"] .how-to-text {
+  color: var(--dark-text);
+}
+
+/* Accent blue needs to be lighter on dark */
+[data-theme="dark"] .career-title,
+[data-theme="dark"] .timeline-meta {
+  color: #6fa8ee;
+}
+
+/* Surfaces */
+[data-theme="dark"] .facts-section-alt {
+  background-color: var(--dark-surface-alt);
+}
+
+[data-theme="dark"] .fact-card,
+[data-theme="dark"] .how-to {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+[data-theme="dark"] .fact-card:hover {
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="dark"] .timeline-item {
+  border-bottom-color: var(--dark-border);
+}
+
+[data-theme="dark"] .facts-section-alt,
+[data-theme="dark"] .fact-card,
+[data-theme="dark"] .how-to {
+  transition-property: background-color, border-color, transform, box-shadow;
+}
+
+/*to match the darkmode*/
+.start-game,
+.restart-game {
+  color: var(--primary-color);
+}

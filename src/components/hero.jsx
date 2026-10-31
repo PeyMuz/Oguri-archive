@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Footer from './footer';
 import OguriMain from '../assets/Oguri cap1.png';
 import Oguri2 from '../assets/Oguri2.png';
 import Oguri3 from '../assets/Oguri3.png';
@@ -76,6 +77,7 @@ function Hero(){
   };
 
   return(
+    <>
     <section className='hero'>
       <div className="container">
 
@@ -125,8 +127,9 @@ function Hero(){
         </div>
 
       </div>
+    </section>
 
-        {/*Her Story: lalabas lang pag na-click yung Explore button*/}
+      {/*Her Story: lalabas lang pag na-click yung Explore button*/}
       {storyShow && (
         <section className="story" ref={storyRef}>
           <div className="container">
@@ -159,6 +162,9 @@ function Hero(){
         </section>
       )}
 
+      {/*Footer sa Home: lalabas lang kasama ng Her Story, sa pinakababa*/}
+      {storyShow && <Footer />}
+
       {/*for the Lightbox: lalabas lang kapag may na-click*/}
       {selectedImg && (
         <div className="lightbox" onClick={() => setSelectedImg(null)}>
@@ -170,7 +176,7 @@ function Hero(){
           />
         </div>
       )}
-    </section>
+    </>
   );
 }
 

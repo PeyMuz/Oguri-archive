@@ -1,0 +1,403 @@
+/* =========================================================
+   responsive.css - import AFTER App.css and theme.css
+   ========================================================= */
+
+/*---Page Layout (para laging nasa baba ang footer)---*/
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*---Ayos sa flex: huwag lumiit ang mga section---*/
+.hero,
+.story,
+.facts,
+.title-fact,
+.career-hero,
+.timeline,
+.title-section,
+.game-section,
+.how-to {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*---Footer---*/
+.site-footer {
+  margin-top: auto;
+  background-color: var(--primary-color);
+  color: var(--secondary-text);
+  font-family: 'Inter', sans-serif;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  animation: fadeUp 0.8s ease backwards;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  color: var(--text-color);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.footer-text {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  margin-bottom: 0.3rem;
+}
+
+.footer-copy {
+  color: var(--gold);
+  font-size: 0.7rem;
+  margin: 0.5rem 0 0;
+}
+
+[data-theme="dark"] .site-footer {
+  background-color: #070d1a;
+  border-top: 1px solid var(--dark-border);
+}
+
+/*---Touch (para hindi mag-zoom pag nag-tap sa game)---*/
+.game-container {
+  touch-action: manipulation;
+}
+
+/* =========================================================
+   TABLET (hanggang 991px)
+   ========================================================= */
+@media (max-width: 991px) {
+  /*---Navbar---*/
+  .nav .navbar-brand {
+    font-size: 24px;
+  }
+
+  .nav .navbar-nav .nav-link {
+    font-size: 16px;
+    padding-inline: 0.5rem;
+  }
+
+  /*---Hero---*/
+  .hero-title {
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+  }
+
+  .hero-label {
+    font-size: 1.1rem;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+  }
+
+  .hero-chibi {
+    height: 200px;
+  }
+
+  .hero-thumbs {
+    gap: 1.5rem;
+    margin-right: 0;
+  }
+
+  /*---Facts---*/
+  .fact-title {
+    font-size: 1.3rem;
+  }
+
+  .fact-card-wide .fact-img {
+    margin-left: 0;
+  }
+}
+
+/* =========================================================
+   PHONE / TABLET NA STACKED (hanggang 767px)
+   ========================================================= */
+@media (max-width: 767px) {
+  /*---Layout---*/
+  .nav .container,
+  .hero .container,
+  .story .container,
+  .facts-section .container {
+    max-width: 100%;
+    padding-inline: 1.2rem;
+  }
+
+  /*---Hero---*/
+  .hero {
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin-inline: auto;
+  }
+
+  .hero-chibi {
+    height: 170px;
+    max-width: 100%;
+    margin: 2rem auto 2rem;
+  }
+
+  .hero-main-img {
+    margin: 0 auto;
+  }
+
+  .hero-thumbs {
+    max-width: 100%;
+    margin: 1.2rem auto 0;
+  }
+
+  /*---Her Story---*/
+  .story {
+    padding: 2.5rem 0;
+  }
+
+  .story-heading {
+    font-size: 2rem;
+  }
+
+  .story-item {
+    margin-bottom: 2.5rem;
+  }
+
+  .story-img {
+    margin-top: 1rem;
+  }
+
+  /*---Facts---*/
+  .title-fact {
+    flex-wrap: wrap;
+    max-width: 100%;
+    gap: 1rem;
+    padding: 2rem 1.2rem 0.5rem;
+  }
+
+  .title-fact h1 {
+    font-size: 2rem;
+  }
+
+  .title-fact img {
+    height: 55px;
+  }
+
+  .facts-section {
+    padding: 2rem 0;
+  }
+
+  .facts-heading {
+    font-size: 1.8rem;
+  }
+
+  .fact-card-wide {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .fact-card-wide .fact-number {
+    margin-bottom: 0;
+  }
+
+  .fact-card-wide .fact-img {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /*---Career---*/
+  .career-hero {
+    padding: 1.2rem 1.2rem 0;
+  }
+
+  .career-title {
+    font-size: 2rem;
+  }
+
+  .timeline {
+    padding: 2rem 1.2rem 3rem;
+  }
+
+  .timeline-heading {
+    font-size: 1.5rem;
+  }
+
+  .timeline-item {
+    gap: 1rem;
+  }
+
+  .timeline-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .timeline-title {
+    font-size: 1.2rem;
+  }
+
+  /*---Game---*/
+  .title-section {
+    padding: 1.5rem 1.2rem 0.5rem;
+  }
+
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .game-section {
+    padding-inline: 1rem;
+  }
+
+  .game-container {
+    height: 520px;
+  }
+
+    .game-container,
+  .bg-sunset {
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+  }
+
+    .obstacle {
+    bottom: 22%;
+    z-index: 1;
+  }
+
+  .player {
+    bottom: 19.5%;
+    z-index: 1;
+  }
+
+  .score-card {
+    font-size: 26px;
+    margin: 12px;
+  }
+
+  .score-card span {
+    margin-right: 8px;
+  }
+
+  .score-card .label {
+    font-size: 12px;
+    margin-right: 4px;
+  }
+
+  .audio-control {
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    gap: 6px;
+  }
+
+  .volume-slider {
+    width: 70px;
+  }
+
+  .start-game,
+  .restart-game {
+    font-size: 26px;
+  }
+
+  .over-msg {
+    font-size: 20px;
+    padding-inline: 1rem;
+  }
+
+  .start-game .btn-start-game,
+  .restart-game .btn-reset-game {
+    width: 40px;
+    height: 40px;
+  }
+
+  .how-to {
+    margin: 1rem 1rem 3rem;
+    padding: 1.2rem;
+  }
+}
+
+/* =========================================================
+   MALIIT NA PHONE (hanggang 575px)
+   ========================================================= */
+@media (max-width: 575px) {
+  /*---Navbar (magwa-wrap para kasya)---*/
+  .nav .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.3rem;
+  }
+
+  .nav .navbar-brand {
+    font-size: 22px;
+    margin-right: 0;
+  }
+
+  .nav .navbar-nav {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
+  }
+
+  .nav .navbar-nav .nav-link {
+    font-size: 15px;
+    padding: 0.3rem 0.5rem;
+  }
+
+  /*---Hero---*/
+  .hero-label {
+    font-size: 0.9rem;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+  }
+
+  .hero-thumbs {
+    gap: 0.8rem;
+  }
+
+  .hero-thumbs img,
+  .hero-main-img,
+  .story-img,
+  .career-img {
+    border-radius: 16px;
+  }
+
+  /*---Facts---*/
+  .title-fact h1 {
+    font-size: 1.7rem;
+  }
+
+  .fact-title {
+    font-size: 1.3rem;
+  }
+
+  /*---Career---*/
+  .career-title {
+    font-size: 1.7rem;
+  }
+
+  /*---Game---*/
+  .score-card {
+    font-size: 22px;
+  }
+
+  .start-game,
+  .restart-game {
+    font-size: 22px;
+  }
+}
