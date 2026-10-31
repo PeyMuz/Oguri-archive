@@ -452,7 +452,7 @@
 .hero-desc,
 .hero-btn,
 .hero-chibi {
-  animation: fadeUp 0.9s ease both;
+  animation: fadeUp 0.9s ease backwards;
 }
 
 .hero-label { animation-delay: 0.1s; }
@@ -462,15 +462,15 @@
 .hero-chibi { animation-delay: 0.7s; }
 
 .hero-main-img{
-  animation: fadeUp 1s ease 0.3s both;
+  animation: fadeUp 1s ease 0.3s backwards;
 }
 
 .hero-thumbs img:nth-child(1) {
-  animation: fadeUp 1s ease 0.6s both;
+  animation: fadeUp 1s ease 0.6s backwards;
 }
 
 .hero-thumbs img:nth-child(2) {
-  animation: fadeUp 1s ease 0.8s both;
+  animation: fadeUp 1s ease 0.8s backwards;
 }
 
 
@@ -537,7 +537,7 @@
   gap: 1.5rem;
   padding: 1.5rem 0;
   border-bottom: 1px solid #E8EBF2;
-  transform: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .timeline-item:hover {
